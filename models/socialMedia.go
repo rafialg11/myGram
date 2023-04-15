@@ -5,6 +5,7 @@ import (
 	"gorm.io/gorm"
 )
 
+// Social Media store user's social media links and name
 type SocialMedia struct {
 	GormModel
 	Name      string `json:"name" form:"name" valid:"required~name is Required"`

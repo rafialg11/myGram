@@ -11,6 +11,15 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// CreateSocialMedia godoc
+// @Summary Post detail for a given id
+// @Description Post SocialMedia Detail corresponding to the input id
+// @Tags socialMedia
+// @Accept json
+// @Produce json
+// @Param models.SocialMedia body models.SocialMedia true "create socmed"
+// @Success 200 {object} models.SocialMedia
+// @Router /socMed/ [post]
 func CreateSocMed(c *gin.Context) {
 	db := database.GetDB()
 	userData := c.MustGet("userData").(jwt.MapClaims)
@@ -47,6 +56,15 @@ func CreateSocMed(c *gin.Context) {
 	c.JSON(http.StatusCreated, SocialMedia)
 }
 
+// GetSocialMediaById godoc
+// @Summary Get detail for the given id
+// @Description Get SocialMedia Detail corresponding to the input id
+// @Tags socialMedia
+// @Accept json
+// @Produce json
+// @Param id path int true "Id of the commment"
+// @Success 200 {object} models.SocialMedia
+// @Router /socMed/{id} [put]
 func GetSocialMediaById(c *gin.Context) {
 	db := database.GetDB()
 	contentType := helpers.GetContentType(c)
@@ -85,6 +103,15 @@ func GetSocialMediaById(c *gin.Context) {
 	c.JSON(http.StatusOK, SocialMedia)
 }
 
+// UpdateSocialMedia godoc
+// @Summary Update SocialMedia identified by the given id
+// @Description Update the comment corresponding to the input id
+// @Tags socialMedia
+// @Accept json
+// @Produce json
+// @Param id path int true "Id of the commment to be updated"
+// @Success 200 {object} models.SocialMedia
+// @Router /socMed/{id} [put]
 func UpdateSocialMedia(c *gin.Context) {
 	db := database.GetDB()
 	userData := c.MustGet("userData").(jwt.MapClaims)
@@ -116,6 +143,15 @@ func UpdateSocialMedia(c *gin.Context) {
 	c.JSON(http.StatusOK, SocialMedia)
 }
 
+// DeleteSocialMedia godoc
+// @Summary Delete SocialMedia identified by the given id
+// @Description Delete the comment corresponding to the input id
+// @Tags socialMedia
+// @Accept json
+// @Produce json
+// @Param id path int true "Id of the commment to be deleted"
+// @Success 200 {object} models.SocialMedia
+// @Router /socMed/{id} [delete]
 func DeleteSocialMedia(c *gin.Context) {
 	db := database.GetDB()
 	contentType := helpers.GetContentType(c)
@@ -142,6 +178,14 @@ func DeleteSocialMedia(c *gin.Context) {
 	c.JSON(http.StatusOK, "Deleted")
 }
 
+// GetAllSocialMedia godoc
+// @Summary Get Details
+// @Description Get details of All SocialMedia
+// @Tags socialMedia
+// @Accept json
+// @Produce json
+// @Success 200 {object} models.SocialMedia
+// @Router /socMed/ [get]
 func GetAllSocialMedia(c *gin.Context) {
 	db := database.GetDB()
 	contentType := helpers.GetContentType(c)
